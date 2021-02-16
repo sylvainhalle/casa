@@ -1,0 +1,63 @@
+Each subject is described by two input files: one for the CIT model and one for the explicit constraints. In the descriptions below, text within square brackets (‘[’ and ‘]’) denotes a value or set of values; values are separated by whitespace. ‘\n’ is shown where we have opted to use a newline.
+
+The model file has the following format:
+
+[strength of testing (t)] \n
+[number of options (k)] \n
+[number of values in the first column (v0)] [more vis] \n
+
+For example, if we are 4-way testing a system with four binary options and a ternary option, the model file could be written:
+
+4
+5
+2 2 2 2 3
+Each option from left to right is given a set of distinct symbols starting with zero. In the example above, the ternary option has symbols 8–10 because symbols 0–7 were taken by the four binary options. Constraints are written as a conjunction of disjunctions over these symbols, in the following format:
+
+[number of disjunctive clauses] \n
+[number of terms in this disjunctive clause] \n
+[+ for plain, - for negated] [variable] [more plain or negated variables...] \n
+[more disjunctive clauses...] \n
+
+Continuing the example, let us add two constraints: First, if the ternary option takes its lowest value then the first binary option does not. Second, choosing value 3 (for the second binary option) implies either value 4 (for the third option) or value 7 (for the fourth). These constraints could be encoded as:
+
+2
+2
+- 0 - 8
+3
+- 3 + 4 + 7
+The output follows the same symbol numbering scheme as the constraint file. Its format is:
+
+[number of configurations (rows)] \n
+[chosen value for the first option in the first configuration] [more chosen values for the first configuration] \n
+[more configurations] \n
+
+With the example inputs we might obtain the output shown below:
+
+27
+0 2 4 6 10
+0 2 4 7 9
+0 2 5 6 10
+0 2 5 6 9
+0 2 5 7 10
+0 3 4 6 10
+0 3 4 6 9
+0 3 4 7 10
+0 3 5 7 10
+0 3 5 7 9
+1 2 4 6 8
+1 2 4 6 9
+1 2 4 7 10
+1 2 4 7 8
+1 2 5 6 10
+1 2 5 6 8
+1 2 5 6 9
+1 2 5 7 8
+1 2 5 7 9
+1 3 4 6 10
+1 3 4 6 8
+1 3 4 6 9
+1 3 4 7 8
+1 3 4 7 9
+1 3 5 7 10
+1 3 5 7 8
+1 3 5 7 9
