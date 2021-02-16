@@ -9,4 +9,8 @@ I am putting this code on the repository as it is licensed as free software, but
 
 Please see the file `doc.txt` for instructions on how to use the tool written by the original author.
 
+## How to compile
+
+Under Linux: just type `make` (g++ required). Resulting executable is called `casa-1.1b`.
+
 <!-- :wrap=soft: -->
