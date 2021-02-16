@@ -4,7 +4,7 @@ TARGET = casa-1.1b
 # The compiler options
 CC = g++
 CFLAGS = \
-    -Wredundant-decls -Wall -Werror -g \
+    -Wredundant-decls -Wall -g \
     -Icasa -Icommon -Icommon/utility -Iminisat/solver -Iminisat/include \
     -DSEARCH_PROGRESS
 LFLAGS =
@@ -59,7 +59,7 @@ endif
 endif
 
 TAGS:	$(ALL_INPUTS)
-	etags $^
+	#etags $^
 
 clean:
 	-$(RM) $(TARGET) $(SOURCES:%=%.o)

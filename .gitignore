@@ -1,0 +1,9 @@
+*.tmp
+*.bak
+*.out
+*.o
+Makefile.depend
+*~
+\#*
+casa-1.1b
+Dependencies
